@@ -26,5 +26,8 @@ class Event:
     id:str = field(default_factory=generate_unique_id())
 
     def add_reminder(self,email, system, date_time, type):
-        reminder = Reminder(email, system, date_time, type)
-        self.reminders.append(reminder)
+        self.reminders.append(Reminder(email, system, date_time, type))
+    def delete_reminder (self,reminder_index:int):
+        for i in range(len(self.reminders)):
+            if reminder_index == self.reminders[i]:
+                self.reminders.pop(i)
